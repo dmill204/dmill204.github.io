@@ -9,7 +9,7 @@
     <h1>Google Books Search</h1>
     <!-- Main Menu -->
     <nav>
-        <a href="index.html">Home</a> |
+        <a href="https://dmill204.github.io/Web_Page/">Home</a> |
         <a href="bookshelf.html">My Bookshelf</a>
     </nav>
     <!-- Search Form -->
