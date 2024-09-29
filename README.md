@@ -9,9 +9,9 @@
     <h1>Home Page</h1>
     <!-- Main Menu -->
     <nav>
-        <a href="https://dmill204.github.io/Web_Page/">Home</a>
-        <a href="https://books.google.com">Search Books</a>
-        <a href="https://dmill204.github.io/bookshelf.io/index.html">My Bookshelf</a>
+        </li><a href="https://dmill204.github.io/Web_Page/">Home</a></li>
+        </li><a href="https://books.google.com">Search Books</a></li>
+        </li><a href="https://dmill204.github.io/bookshelf.io/index.html">My Bookshelf</a></li>
     </nav>
 </body>
 </html>
