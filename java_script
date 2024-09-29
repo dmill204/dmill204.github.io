@@ -1,0 +1,78 @@
+const apiKey = 'YOUR_API_KEY';
+
+// Function to handle book search
+function searchBooks() {
+    const searchTerm = document.getElementById('searchTerm').value;
+    const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=60&key=${apiKey}`;
+    
+    fetch(searchUrl)
+        .then(response => response.json())
+        .then(data => {
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+            data.items.forEach(book => {
+                const bookDiv = document.createElement('div');
+                bookDiv.innerHTML = `
+                    <h3><a href="book-details.html?id=${book.id}">${book.volumeInfo.title}</a></h3>
+                    <img src="${book.volumeInfo.imageLinks?.thumbnail}" alt="${book.volumeInfo.title}">
+                `;
+                results.appendChild(bookDiv);
+            });
+
+            // Pagination logic (optional)
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to display book details
+function displayBookDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookId = urlParams.get('id');
+    const detailsUrl = `https://www.googleapis.com/books/v1/volumes/${bookId}?key=${apiKey}`;
+
+    fetch(detailsUrl)
+        .then(response => response.json())
+        .then(data => {
+            const bookDetails = document.getElementById('bookDetails');
+            const book = data.volumeInfo;
+            bookDetails.innerHTML = `
+                <h2>${book.title}</h2>
+                <img src="${book.imageLinks?.thumbnail}" alt="${book.title}">
+                <p><strong>Authors:</strong> ${book.authors?.join(', ')}</p>
+                <p><strong>Publisher:</strong> ${book.publisher}</p>
+                <p><strong>Published Date:</strong> ${book.publishedDate}</p>
+                <p><strong>Description:</strong> ${book.description}</p>
+            `;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to display public bookshelf
+function displayBookshelf() {
+    const bookshelfId = 'YOUR_BOOKSHELF_ID';  // Replace with your public bookshelf ID
+    const bookshelfUrl = `https://www.googleapis.com/books/v1/mylibrary/bookshelves/${bookshelfId}/volumes?key=${apiKey}`;
+
+    fetch(bookshelfUrl)
+        .then(response => response.json())
+        .then(data => {
+            const bookshelf = document.getElementById('bookshelf');
+            data.items.forEach(book => {
+                const bookDiv = document.createElement('div');
+                bookDiv.innerHTML = `
+                    <h3><a href="book-details.html?id=${book.id}">${book.volumeInfo.title}</a></h3>
+                    <img src="${book.volumeInfo.imageLinks?.thumbnail}" alt="${book.volumeInfo.title}">
+                `;
+                bookshelf.appendChild(bookDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Initialize the correct page based on the URL
+window.onload = function() {
+    if (window.location.pathname.includes('book-details.html')) {
+        displayBookDetails();
+    } else if (window.location.pathname.includes('bookshelf.html')) {
+        displayBookshelf();
+    }
+};
