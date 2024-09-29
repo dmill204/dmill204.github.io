@@ -6,7 +6,7 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Google Books Search</h1>h1>
+    <h1>Google Books Search</h1>
     <!-- Main Menu -->
     <nav>
         <a href="index.html">Home</a> |
