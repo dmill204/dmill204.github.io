@@ -7,15 +7,12 @@
 </head>
 <body>
     <h1>Home Page</h1>
-    <!-- Main Menu -->
     <nav>
-        <ul>
-        </li><a href="https://dmill204.github.io/Web_Page/">Home</a></li>
+        <a href="https://dmill204.github.io/Web_Page/">Home</a>
             <p></p>
-        </li><a href="https://books.google.com">Search Books</a></li>
+        <a href="https://books.google.com">Search Books</a>
             <p></p>
-        </li><a href="https://dmill204.github.io/bookshelf.io/index.html">My Bookshelf</a></li>
-        </ul>
+        <a href="https://dmill204.github.io/bookshelf.io/index.html">My Bookshelf</a>
     </nav>
 </body>
 </html>
